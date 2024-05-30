@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web_API.Data;
+using Web_API.Helpers;
 
 namespace Web_API.Controllers
 {
@@ -22,6 +24,7 @@ namespace Web_API.Controllers
 
         // GET: api/Books
         [HttpGet]
+        [Authorize(Roles = AppRole.Customer)]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
           if (_context.Books == null)

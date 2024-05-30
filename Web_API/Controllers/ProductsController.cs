@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Web_API.Helpers;
 using Web_API.Models;
 using Web_API.Repositories;
 
@@ -18,6 +19,7 @@ namespace Web_API.Controllers
         }
 
         [HttpGet]
+        //[Authorize(Roles = AppRole.Customer)]
         public async Task<IActionResult> getAllBooks()
         {
             try

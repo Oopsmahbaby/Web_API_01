@@ -16,18 +16,18 @@ namespace Web_API.Controllers
             acountRepo = repo;
         }
 
-        [HttpPost("signUp")]
+        [HttpPost("SignUp")]
         public async Task<IActionResult> signUp(Sign_Up_Model signUpModel)
         {
             var result= await acountRepo.SignUpAsync(signUpModel);
             if(result.Succeeded)
             {
                 return Ok(result.Succeeded);
-            }else
-            return Unauthorized();
+            }
+            return Unauthorized(new {message = "Have some error, please retry!"});
         }
 
-        [HttpPost("signIn")]
+        [HttpPost("SignIn")]
         public async Task<IActionResult> signIn(Sign_In_Model signInModel)
         {
             var result= await acountRepo.SignInAsync(signInModel);
